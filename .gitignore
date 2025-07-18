@@ -1,36 +1,33 @@
-# === CruxLang .gitignore ===
-# Exclude backup, logs, benchmarks, test artifacts, and extra docs
+# Rust
+/target/
+**/target/
 
-# Backup and error logs
-frontend_backup/
-cruxlang_errors/
+# Node.js
+node_modules/
+**/node_modules/
 
-# Benchmarks and results
-benchmark_cruxlang.py
-benchmark_python.py
-benchmark_test.crx
-python_benchmark_results.txt
-cruxlang_benchmark_results.txt
-run_benchmark.bat
+# Logs
+*.log
 
-# Test artifacts (optional, remove if you want to keep examples/tests)
-tests/
-examples/
-example.crx
-test.crx
-if_else_test.crx
-
-# Extra documentation/readme files (keep only main README.md)
-explanation/
-README_BACKUP.md
-README_OLD.md
-README_DRAFT.md
-
-# OS/Editor/IDE files
+# OS files
 .DS_Store
 Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
 *.swp
-*.swo
-*.log
-node_modules/
-target/ 
+
+# Backup or temp folders
+frontend_backup/
+
+# Compiled binaries
+*.exe
+*.dll
+*.pdb
+*.rlib
+*.d
+
+# Misc
+*.bin
+*.o 
