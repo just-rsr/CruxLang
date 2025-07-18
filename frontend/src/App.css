@@ -1,0 +1,992 @@
+/* Step 1: Modern glassmorphism layout and background */
+
+body, html, #root {
+  min-height: 100vh;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Modern Playground Styles (No Split Pane) */
+.playground-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: none;
+}
+
+.playground-header, .playground-footer {
+  background: rgba(30, 32, 60, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 0 0 24px 24px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin: 0 24px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playground-header {
+  margin-top: 24px;
+  margin-bottom: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.1) 0%, rgba(56, 232, 255, 0.1) 100%);
+  border: 1px solid rgba(79, 195, 247, 0.2);
+}
+
+.playground-header h1 {
+  background: linear-gradient(135deg, #4fc3f7 0%, #38e8ff 50%, #4fc3f7 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease-in-out infinite;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.playground-logo {
+  width: 48px;
+  height: 48px;
+  margin-right: 18px;
+  filter: drop-shadow(0 2px 8px #4fc3f7cc);
+  animation: logo-spin 6s linear infinite;
+  transition: transform 0.3s ease;
+}
+
+.playground-logo:hover {
+  transform: scale(1.1) rotate(180deg);
+}
+
+.playground-main-flex {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin: 32px 24px 0 24px;
+}
+
+.playground-sidebar {
+  min-width: 220px;
+  max-width: 260px;
+  background: rgba(255,255,255,0.10);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 24px 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+
+.playground-main-content {
+  flex: 1;
+  background: rgba(255,255,255,0.13);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 32px 32px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.playground-footer {
+  margin-top: 32px;
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  justify-content: center;
+  border-radius: 24px 24px 0 0;
+}
+
+@media (max-width: 1100px) {
+  .playground-main-flex {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .playground-sidebar {
+    flex-direction: row;
+    min-width: 0;
+    max-width: 100vw;
+    border-radius: 18px 18px 0 0;
+    padding: 12px 0;
+  }
+  .playground-main-content {
+    padding: 18px 8px 12px 8px;
+    border-radius: 0 0 24px 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .playground-header, .playground-footer {
+    margin: 0 4px;
+    padding: 12px 8px;
+    border-radius: 0 0 12px 12px;
+  }
+  .playground-main-flex {
+    margin: 12px 4px 0 4px;
+  }
+  .playground-sidebar {
+    border-radius: 12px 12px 0 0;
+    padding: 8px 0;
+  }
+  .playground-main-content {
+    border-radius: 0 0 12px 12px;
+    padding: 8px 2px 8px 2px;
+  }
+  .playground-logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+}
+
+/* Documentation Styles */
+.docs-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  color: #e0e0e0;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: slideInDocs 0.4s ease-out;
+}
+
+@keyframes slideInDocs {
+  from { 
+    opacity: 0; 
+    transform: translateY(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.docs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.1) 0%, rgba(56, 232, 255, 0.1) 100%);
+  border-bottom: 1px solid rgba(79, 195, 247, 0.2);
+  position: relative;
+}
+
+.docs-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.5), transparent);
+}
+
+.docs-header h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #4fc3f7 0%, #38e8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 1px;
+}
+
+.docs-close-btn {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.docs-close-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.docs-close-btn:hover::before {
+  left: 100%;
+}
+
+.docs-close-btn:hover {
+  background: linear-gradient(135deg, #ff8e8e 0%, #ff6b6b 100%);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.docs-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+  line-height: 1.7;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.01) 100%);
+}
+
+.docs-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.docs-content::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+}
+
+.docs-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4fc3f7 0%, #38e8ff 100%);
+  border-radius: 4px;
+}
+
+.docs-content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #38e8ff 0%, #4fc3f7 100%);
+}
+
+.docs-content section {
+  margin-bottom: 48px;
+  padding: 24px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+}
+
+.docs-content section:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(79, 195, 247, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(79, 195, 247, 0.1);
+}
+
+.docs-content h2 {
+  color: #4fc3f7;
+  border-bottom: 2px solid rgba(79, 195, 247, 0.3);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.docs-content h2::before {
+  content: '📚';
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+.docs-content h3 {
+  color: #81c784;
+  margin-top: 28px;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  padding-left: 20px;
+}
+
+.docs-content h3::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: #38e8ff;
+  font-size: 14px;
+}
+
+.docs-content p {
+  margin-bottom: 16px;
+  color: #e0e0e0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.docs-content ul {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+.docs-content li {
+  margin-bottom: 10px;
+  color: #e0e0e0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.docs-content code {
+  background: rgba(79, 195, 247, 0.1);
+  color: #4fc3f7;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+  font-size: 14px;
+  border: 1px solid rgba(79, 195, 247, 0.2);
+  font-weight: 500;
+}
+
+.docs-content pre {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(79, 195, 247, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  overflow-x: auto;
+  margin: 20px 0;
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.docs-content pre::before {
+  content: '💻';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.docs-content pre code {
+  background: none;
+  padding: 0;
+  color: #f8f8f2;
+  font-size: 14px;
+  line-height: 1.5;
+  border: none;
+}
+
+/* Documentation toggle button */
+.docs-toggle-btn {
+  background: linear-gradient(135deg, #4fc3f7 0%, #38e8ff 100%);
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  margin-left: 15px;
+  box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.docs-toggle-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.docs-toggle-btn:hover::before {
+  left: 100%;
+}
+
+.docs-toggle-btn:hover {
+  background: linear-gradient(135deg, #38e8ff 0%, #4fc3f7 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 195, 247, 0.4);
+}
+
+/* Responsive design for docs */
+@media (max-width: 768px) {
+  .docs-content {
+    padding: 20px;
+  }
+  
+  .docs-header {
+    padding: 20px;
+  }
+  
+  .docs-header h1 {
+    font-size: 24px;
+  }
+  
+  .docs-content h2 {
+    font-size: 22px;
+  }
+  
+  .docs-content h3 {
+    font-size: 18px;
+  }
+  
+  .docs-content section {
+    padding: 16px;
+    margin-bottom: 32px;
+  }
+}
+
+/* Step 3: Modern sidebar and file management */
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px 16px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+
+.sidebar-header span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4fc3f7 0%, #38e8ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sidebar-add-btn {
+  background: linear-gradient(135deg, #4fc3f7 0%, #38e8ff 100%);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(79, 195, 247, 0.3);
+}
+
+.sidebar-add-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4);
+}
+
+.sidebar-files {
+  flex: 1;
+  padding: 0 16px;
+  overflow-y: auto;
+}
+
+.sidebar-file {
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #b8c6e0;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-file::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.sidebar-file:hover::before {
+  left: 100%;
+}
+
+.sidebar-file.active, .sidebar-file:hover {
+  background: rgba(79, 195, 247, 0.15);
+  color: #fff;
+  border-color: rgba(79, 195, 247, 0.3);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.2);
+}
+
+.sidebar-file.active {
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.2) 0%, rgba(56, 232, 255, 0.2) 100%);
+  border-color: rgba(79, 195, 247, 0.5);
+  box-shadow: 0 4px 16px rgba(79, 195, 247, 0.3);
+}
+
+/* Step 4: Modern tabs and editor area */
+
+.playground-tabs {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 8px;
+  margin-bottom: 24px;
+  gap: 4px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.playground-tab {
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: transparent;
+  color: #b8c6e0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.playground-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.playground-tab:hover::before {
+  left: 100%;
+}
+
+.playground-tab.active, .playground-tab:hover {
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.2) 0%, rgba(56, 232, 255, 0.2) 100%);
+  color: #fff;
+  border-color: rgba(79, 195, 247, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.2);
+}
+
+.playground-tab.active {
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.3) 0%, rgba(56, 232, 255, 0.3) 100%);
+  border-color: rgba(79, 195, 247, 0.5);
+  box-shadow: 0 4px 16px rgba(79, 195, 247, 0.3);
+}
+
+.tab-settings-btn {
+  margin-left: auto;
+  background: linear-gradient(135deg, #4fc3f7 0%, #38e8ff 100%);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(79, 195, 247, 0.3);
+}
+
+.tab-settings-btn:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4);
+}
+
+.playground-editor-output-flex {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  gap: 24px;
+  min-height: 0;
+}
+
+.playground-editor-area {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.playground-editor-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.5), transparent);
+}
+
+/* Monaco Editor Custom Styling */
+.monaco-editor {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.playground-run-btn {
+  margin-top: 16px;
+  align-self: flex-end;
+  background: linear-gradient(135deg, #4fc3f7 0%, #38e8ff 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.playground-run-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.playground-run-btn:hover::before {
+  left: 100%;
+}
+
+.playground-run-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.playground-run-btn:disabled svg {
+  animation: spin 1s linear infinite;
+}
+
+.playground-run-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #38e8ff 0%, #4fc3f7 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 195, 247, 0.4);
+}
+
+/* Step 5: Modern output area and error handling */
+
+.playground-output-area {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.playground-output-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.5), transparent);
+}
+
+.playground-output-label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #4fc3f7;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.playground-output-label::before {
+  content: '▶';
+  color: #38e8ff;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.playground-output-box {
+  background: rgba(0, 0, 0, 0.3);
+  color: #e0e6f0;
+  border-radius: 16px;
+  padding: 20px;
+  min-height: 200px;
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  flex: 1;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.playground-error {
+  color: #ff6b6b;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  animation: slideInError 0.3s ease-out;
+}
+
+@keyframes slideInError {
+  from { 
+    opacity: 0; 
+    transform: translateX(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+.playground-error::before {
+  content: '⚠';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #ff6b6b;
+}
+
+.playground-error {
+  padding-left: 40px;
+}
+
+/* Step 8: Final polish and animations */
+
+/* Loading animation for the run button */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hover effects for interactive elements */
+.playground-tab, .sidebar-file, .docs-toggle-btn, .tab-settings-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scrolling for the entire app */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection color */
+::selection {
+  background: rgba(79, 195, 247, 0.3);
+  color: #fff;
+}
+
+::-moz-selection {
+  background: rgba(79, 195, 247, 0.3);
+  color: #fff;
+}
+
+/* Focus styles for accessibility */
+button:focus, .playground-tab:focus, .sidebar-file:focus {
+  outline: 2px solid rgba(79, 195, 247, 0.5);
+  outline-offset: 2px;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 480px) {
+  .playground-header h1 {
+    font-size: 20px;
+  }
+  
+  .playground-logo {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+  }
+  
+  .docs-toggle-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .playground-tabs {
+    padding: 6px;
+    gap: 2px;
+  }
+  
+  .playground-tab {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .playground-editor-area, .playground-output-area {
+    padding: 16px;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  }
+}
+
+/* Print styles */
+@media print {
+  .playground-header, .playground-footer, .playground-sidebar, .docs-toggle-btn {
+    display: none;
+  }
+  
+  .playground-main-content {
+    background: white;
+    color: black;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .playground-header, .playground-footer, .playground-sidebar, .playground-main-content {
+    border: 2px solid #4fc3f7;
+  }
+  
+  .playground-tab.active, .sidebar-file.active {
+    background: #4fc3f7;
+    color: #000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .playground-logo {
+    animation: none;
+  }
+  
+  .docs-toggle-btn::before, .playground-run-btn::before, .sidebar-file::before, .playground-tab::before {
+    display: none;
+  }
+}
