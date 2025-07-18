@@ -1,6 +1,6 @@
 # CruxLang - A Modern Programming Language
 
-## 🚀 Overview
+##  Overview
 
 CruxLang is a modern, interpreted programming language built from scratch in Rust. It features a clean syntax, powerful features, and a complete development environment with a web-based playground.
 
@@ -48,7 +48,7 @@ Source Code → Lexer → Parser → AST → Bytecode Generator → VM → Outpu
 - **VM** (`vm.rs`): Executes bytecode instructions
 - **HTTP Server** (`main.rs`): Provides API endpoints
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Running Locally
 
@@ -227,7 +227,7 @@ npm install
 npm run build
 ```
 
-## 🚀 Deployment
+##  Deployment
 
 ### Railway (Recommended)
 1. Connect your GitHub repository to Railway
