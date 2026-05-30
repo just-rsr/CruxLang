@@ -284,4 +284,4 @@ This project is open source and available under the MIT License.
 
 ---
 
-**CruxLang** - Building the future of programming languages, one feature at a time! 🚀
+
